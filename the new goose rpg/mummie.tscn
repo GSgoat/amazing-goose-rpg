@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://mummie.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+[sub_resource type="QuadMesh" id=4]
+
+[node name="Mummie" type="KinematicBody2D"]
+position = Vector2( -200, -41 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CollisionShape2D"]
+position = Vector2( -1.90735e-06, 4.76837e-07 )
+scale = Vector2( 20, 20 )
+mesh = SubResource( 4 )
+
+[node name="Damage cooldown" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="Damage cooldown" to="." method="_on_Damage_cooldown_timeout"]
